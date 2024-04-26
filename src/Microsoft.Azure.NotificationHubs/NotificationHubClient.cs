@@ -2142,6 +2142,66 @@ namespace Microsoft.Azure.NotificationHubs
         #endregion
 
         /// <summary>
+        /// Asynchronously creates browser registration.
+        /// </summary>
+        /// <param name="endpoint">String containing the endpoint associated with the push subscription.</param>
+        /// <param name="auth">Value used to retrieve the authentication secret.</param>
+        /// <param name="p256dh">Value used to retrieve the public key.</param>
+        /// <returns>
+        /// The task that completes the asynchronous operation.
+        /// </returns>
+        public Task<BrowserRegistrationDescription> CreateBrowserNativeRegistrationAsync(string endpoint, string auth, string p256dh)
+        {
+            return CreateRegistrationAsync(new BrowserRegistrationDescription(new BrowserPushSubscription { Auth = auth, Endpoint = endpoint, P256DH = p256dh }));
+        }
+
+        /// <summary>
+        /// Asynchronously creates browser registration.
+        /// </summary>
+        /// <param name="endpoint">String containing the endpoint associated with the push subscription.</param>
+        /// <param name="auth">Value used to retrieve the authentication secret.</param>
+        /// <param name="p256dh">Value used to retrieve the public key.</param>
+        /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
+        /// <returns>
+        /// The task that completes the asynchronous operation.
+        /// </returns>
+        public Task<BrowserRegistrationDescription> CreateBrowserNativeRegistrationAsync(string endpoint, string auth, string p256dh, CancellationToken cancellationToken)
+        {
+            return CreateRegistrationAsync(new BrowserRegistrationDescription(new BrowserPushSubscription { Auth = auth, Endpoint = endpoint, P256DH = p256dh }), cancellationToken);
+        }
+
+        /// <summary>
+        /// Asynchronously creates browser registration.
+        /// </summary>
+        /// <param name="endpoint">String containing the endpoint associated with the push subscription.</param>
+        /// <param name="auth">Value used to retrieve the authentication secret.</param>
+        /// <param name="p256dh">Value used to retrieve the public key.</param>
+        /// <param name="tags">The tags.</param>
+        /// <returns>
+        /// The task that completes the asynchronous operation.
+        /// </returns>
+        public Task<BrowserRegistrationDescription> CreateBrowserNativeRegistrationAsync(string endpoint, string auth, string p256dh, IEnumerable<string> tags)
+        {
+            return CreateRegistrationAsync(new BrowserRegistrationDescription(new BrowserPushSubscription { Auth = auth, Endpoint = endpoint, P256DH = p256dh }, tags));
+        }
+
+        /// <summary>
+        /// Asynchronously creates browser registration.
+        /// </summary>
+        /// <param name="endpoint">String containing the endpoint associated with the push subscription.</param>
+        /// <param name="auth">Value used to retrieve the authentication secret.</param>
+        /// <param name="p256dh">Value used to retrieve the public key.</param>
+        /// <param name="tags">The tags.</param>
+        /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for a task to complete.</param>
+        /// <returns>
+        /// The task that completes the asynchronous operation.
+        /// </returns>
+        public Task<BrowserRegistrationDescription> CreateBrowserNativeRegistrationAsync(string endpoint, string auth, string p256dh, IEnumerable<string> tags, CancellationToken cancellationToken)
+        {
+            return CreateRegistrationAsync(new BrowserRegistrationDescription(new BrowserPushSubscription { Auth = auth, Endpoint = endpoint, P256DH = p256dh }, tags), cancellationToken);
+        }
+        
+        /// <summary>
         /// Asynchronously creates MPNS native registration.
         /// </summary>
         /// <param name="channelUri">The channel URI.</param>
